@@ -10,6 +10,7 @@ export const GameBody = ({
   setGameOver,
   flagsLeft,
   setFlagsLeft,
+  setWonGame,
 }) => {
   return (
     <View style={styles.body}>
@@ -23,6 +24,7 @@ export const GameBody = ({
           setGameOver={setGameOver}
           flagsLeft={flagsLeft}
           setFlagsLeft={setFlagsLeft}
+          setWonGame={setWonGame}
         />
       ))}
     </View>

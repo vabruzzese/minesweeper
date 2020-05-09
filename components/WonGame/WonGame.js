@@ -5,9 +5,9 @@ import {styles} from './styles';
 import {createBoard} from '../../utils/board';
 import {MAX_NUMBER_OF_FLAGS} from '../../utils/constants';
 
-export const GameOver = ({setGameOver, setBoard, setFlagsLeft}) => {
+export const WonGame = ({setWonGame, setBoard, setFlagsLeft}) => {
   const resetGame = () => {
-    setGameOver(false);
+    setWonGame(false);
     const newBoard = createBoard();
     setBoard(newBoard);
     setFlagsLeft(MAX_NUMBER_OF_FLAGS);
@@ -16,12 +16,14 @@ export const GameOver = ({setGameOver, setBoard, setFlagsLeft}) => {
     <Modal visible={true} transparent={true}>
       <View style={styles.topView}>
         <View style={styles.innerView}>
-          <Text style={styles.title}>GAME OVER</Text>
+          <Text style={styles.title}>YOU WIN</Text>
           <Text style={styles.sentence}>
             Select the 'Retry' button to play again
           </Text>
-          <Button style={styles.button} onPress={resetGame}>
-            <Text style={styles.buttonText}>Retry</Text>
+          <Button style={styles.button}>
+            <Text style={styles.buttonText} onPress={resetGame}>
+              Retry
+            </Text>
           </Button>
         </View>
       </View>

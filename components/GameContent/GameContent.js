@@ -4,11 +4,18 @@ import {styles} from './styles';
 import {GameHeader} from './GameHeader';
 import {GameBody} from './GameBody';
 import {GameBanner} from './GameBanner';
-import {SELECTED_OPTION, MAX_NUMBER_OF_FLAGS} from '../../utils/constants';
+import {SELECTED_OPTION} from '../../utils/constants';
 
-export const GameContent = ({board, setBoard, gameOver, setGameOver}) => {
+export const GameContent = ({
+  board,
+  setBoard,
+  gameOver,
+  setGameOver,
+  setWonGame,
+  flagsLeft,
+  setFlagsLeft,
+}) => {
   const [selectedOption, setSelectedOption] = useState(SELECTED_OPTION.SEARCH);
-  const [flagsLeft, setFlagsLeft] = useState(MAX_NUMBER_OF_FLAGS);
   return (
     <View style={styles.gameBoard}>
       <GameHeader
@@ -23,6 +30,7 @@ export const GameContent = ({board, setBoard, gameOver, setGameOver}) => {
         setGameOver={setGameOver}
         flagsLeft={flagsLeft}
         setFlagsLeft={setFlagsLeft}
+        setWonGame={setWonGame}
       />
       <GameBanner selectedOption={selectedOption} />
     </View>

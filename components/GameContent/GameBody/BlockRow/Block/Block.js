@@ -5,7 +5,7 @@ import {styles} from './styles';
 import {Flag} from '../../../../Icons/Flag';
 import {Mine} from '../../../../Icons/Mine';
 import {SELECTED_OPTION} from '../../../../../utils/constants';
-import {revealSection} from '../../../../../utils/board';
+import {revealSection, hasWonGame} from '../../../../../utils/board';
 
 export const Block = ({
   block,
@@ -15,6 +15,7 @@ export const Block = ({
   setGameOver,
   flagsLeft,
   setFlagsLeft,
+  setWonGame,
 }) => {
   const selectBlock = () => {
     const x = block.x;
@@ -36,6 +37,9 @@ export const Block = ({
       }
     }
     setBoard([...board]);
+    if (hasWonGame(board)) {
+      setWonGame(true);
+    }
   };
   const removeFlag = () => {
     const x = block.x;

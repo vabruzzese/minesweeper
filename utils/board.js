@@ -133,3 +133,18 @@ export const revealSection = (block, board) => {
     n.isRevealed = true;
   }
 };
+
+export const hasWonGame = board => {
+  let matches = 0;
+  for (let i = 0; i < NUMBER_OF_ROWS; i++) {
+    for (let j = 0; j < NUMBER_OF_COLUMNS; j++) {
+      if (board[j][i].isFlagged && board[j][i].hasMine) {
+        matches++;
+      }
+    }
+  }
+  if (matches === MAX_NUMBER_OF_MINES) {
+    return true;
+  }
+  return false;
+};

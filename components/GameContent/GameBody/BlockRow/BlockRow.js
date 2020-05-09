@@ -11,6 +11,7 @@ export const BlockRow = ({
   setGameOver,
   flagsLeft,
   setFlagsLeft,
+  setWonGame,
 }) => (
   <View style={styles.blockRow}>
     {row.map(block => (
@@ -23,6 +24,7 @@ export const BlockRow = ({
         setGameOver={setGameOver}
         flagsLeft={flagsLeft}
         setFlagsLeft={setFlagsLeft}
+        setWonGame={setWonGame}
       />
     ))}
   </View>
