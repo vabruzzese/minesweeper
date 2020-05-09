@@ -6,10 +6,9 @@ import {GameBody} from './GameBody';
 import {GameBanner} from './GameBanner';
 import {SELECTED_OPTION, MAX_NUMBER_OF_FLAGS} from '../../utils/constants';
 
-export const GameContent = ({board, setBoard}) => {
+export const GameContent = ({board, setBoard, gameOver, setGameOver}) => {
   const [selectedOption, setSelectedOption] = useState(SELECTED_OPTION.SEARCH);
   const [flagsLeft, setFlagsLeft] = useState(MAX_NUMBER_OF_FLAGS);
-  const [gameOver, setGameOver] = useState(false);
   return (
     <View style={styles.gameBoard}>
       <GameHeader
