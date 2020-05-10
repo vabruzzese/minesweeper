@@ -10,6 +10,7 @@ export const GameContent = ({
   board,
   setBoard,
   gameOver,
+  wonGame,
   setGameOver,
   setWonGame,
   flagsLeft,
@@ -19,6 +20,7 @@ export const GameContent = ({
   return (
     <View style={styles.gameBoard}>
       <GameHeader
+        wonGame={wonGame}
         gameOver={gameOver}
         setSelectedOption={setSelectedOption}
         flagsLeft={flagsLeft}

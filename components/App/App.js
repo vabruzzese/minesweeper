@@ -23,6 +23,7 @@ export const App = () => {
             setBoard={setBoard}
             gameOver={gameOver}
             setGameOver={setGameOver}
+            wonGame={wonGame}
             setWonGame={setWonGame}
             flagsLeft={flagsLeft}
             setFlagsLeft={setFlagsLeft}
