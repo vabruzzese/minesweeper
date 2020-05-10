@@ -148,14 +148,18 @@ export const updateFlags = (board, flagsLeft, setFlagsLeft) => {
 
 export const hasWonGame = board => {
   let matches = 0;
+  let notRevealed = false;
   for (let i = 0; i < NUMBER_OF_ROWS; i++) {
     for (let j = 0; j < NUMBER_OF_COLUMNS; j++) {
       if (board[j][i].isFlagged && board[j][i].hasMine) {
         matches++;
       }
+      if (!board[j][i].isFlagged && !board[j][i].isRevealed) {
+        notRevealed = true;
+      }
     }
   }
-  if (matches === MAX_NUMBER_OF_MINES) {
+  if (matches === MAX_NUMBER_OF_MINES && !notRevealed) {
     return true;
   }
   return false;
