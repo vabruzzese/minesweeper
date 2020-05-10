@@ -6,21 +6,22 @@ import {View} from 'native-base';
 import {styles} from './styles';
 import {SearchButton} from './SearchButton/SearchButton';
 import {FlagButton} from './FlagButton';
-import { Cool } from '../../Icons/Cool';
+import {Cool} from '../../Icons/Cool';
 
 export const GameHeader = ({
   wonGame,
   gameOver,
   setSelectedOption,
   flagsLeft,
+  blocksLeft,
 }) => (
   <View style={styles.gameHeader}>
-    <Ticker number={flagsLeft} />
+    <Ticker number={blocksLeft} />
     <SearchButton setSelectedOption={setSelectedOption} />
     {!gameOver && !wonGame && <Smile />}
     {wonGame && <Cool />}
     {gameOver && <Sad />}
     <FlagButton setSelectedOption={setSelectedOption} />
-    <Ticker />
+    <Ticker number={flagsLeft} />
   </View>
 );

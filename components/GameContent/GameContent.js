@@ -15,6 +15,8 @@ export const GameContent = ({
   setWonGame,
   flagsLeft,
   setFlagsLeft,
+  blocksLeft,
+  setBlocksLeft,
 }) => {
   const [selectedOption, setSelectedOption] = useState(SELECTED_OPTION.SEARCH);
   return (
@@ -24,6 +26,7 @@ export const GameContent = ({
         gameOver={gameOver}
         setSelectedOption={setSelectedOption}
         flagsLeft={flagsLeft}
+        blocksLeft={blocksLeft}
       />
       <GameBody
         board={board}
@@ -33,6 +36,7 @@ export const GameContent = ({
         flagsLeft={flagsLeft}
         setFlagsLeft={setFlagsLeft}
         setWonGame={setWonGame}
+        setBlocksLeft={setBlocksLeft}
       />
       <GameBanner selectedOption={selectedOption} />
     </View>

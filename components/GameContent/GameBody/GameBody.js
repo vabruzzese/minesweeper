@@ -11,6 +11,7 @@ export const GameBody = ({
   flagsLeft,
   setFlagsLeft,
   setWonGame,
+  setBlocksLeft,
 }) => {
   return (
     <View style={styles.body}>
@@ -25,6 +26,7 @@ export const GameBody = ({
           flagsLeft={flagsLeft}
           setFlagsLeft={setFlagsLeft}
           setWonGame={setWonGame}
+          setBlocksLeft={setBlocksLeft}
         />
       ))}
     </View>

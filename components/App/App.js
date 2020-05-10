@@ -5,13 +5,19 @@ import {GameContent} from '../GameContent';
 import {createBoard} from '../../utils/board';
 import {GameOver} from '../GameOver';
 import {WonGame} from '../WonGame';
-import {MAX_NUMBER_OF_FLAGS} from '../../utils/constants';
+import {
+  MAX_NUMBER_OF_FLAGS,
+  NUMBER_OF_ROWS,
+  NUMBER_OF_COLUMNS,
+} from '../../utils/constants';
 
 export const App = () => {
   const [board, setBoard] = useState(createBoard());
   const [gameOver, setGameOver] = useState(false);
   const [wonGame, setWonGame] = useState(false);
   const [flagsLeft, setFlagsLeft] = useState(MAX_NUMBER_OF_FLAGS);
+  const numOfBlocks = NUMBER_OF_ROWS * NUMBER_OF_COLUMNS;
+  const [blocksLeft, setBlocksLeft] = useState(numOfBlocks);
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -27,6 +33,8 @@ export const App = () => {
             setWonGame={setWonGame}
             flagsLeft={flagsLeft}
             setFlagsLeft={setFlagsLeft}
+            blocksLeft={blocksLeft}
+            setBlocksLeft={setBlocksLeft}
           />
           {gameOver && (
             <GameOver
@@ -34,6 +42,7 @@ export const App = () => {
               setGameOver={setGameOver}
               setBoard={setBoard}
               setFlagsLeft={setFlagsLeft}
+              setBlocksLeft={setBlocksLeft}
             />
           )}
           {wonGame && (
@@ -42,6 +51,7 @@ export const App = () => {
               setWonGame={setWonGame}
               setBoard={setBoard}
               setFlagsLeft={setFlagsLeft}
+              setBlocksLeft={setBlocksLeft}
             />
           )}
         </View>

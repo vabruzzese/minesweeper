@@ -3,10 +3,20 @@ import {View, Text, Button} from 'native-base';
 import {Modal, Animated, Dimensions} from 'react-native';
 import {styles} from './styles';
 import {createBoard} from '../../utils/board';
-import {MAX_NUMBER_OF_FLAGS} from '../../utils/constants';
+import {
+  MAX_NUMBER_OF_FLAGS,
+  NUMBER_OF_ROWS,
+  NUMBER_OF_COLUMNS,
+} from '../../utils/constants';
 import {animateModal} from '../../utils/modal';
 
-export const WonGame = ({gameOver, setWonGame, setBoard, setFlagsLeft}) => {
+export const WonGame = ({
+  gameOver,
+  setWonGame,
+  setBoard,
+  setFlagsLeft,
+  setBlocksLeft,
+}) => {
   const modalHeight = Dimensions.get('window').height / 2;
   const easeAnime = new Animated.Value(0);
   const scaleX = new Animated.Value(1);
@@ -19,6 +29,8 @@ export const WonGame = ({gameOver, setWonGame, setBoard, setFlagsLeft}) => {
     const newBoard = createBoard();
     setBoard(newBoard);
     setFlagsLeft(MAX_NUMBER_OF_FLAGS);
+    const numOfBlocks = NUMBER_OF_ROWS * NUMBER_OF_COLUMNS;
+    setBlocksLeft(numOfBlocks);
   };
   return (
     <Modal visible={true} transparent={true}>

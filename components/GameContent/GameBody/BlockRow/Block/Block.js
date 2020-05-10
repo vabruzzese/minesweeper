@@ -9,6 +9,7 @@ import {
   revealSection,
   hasWonGame,
   updateFlags,
+  getBlocksLeft,
 } from '../../../../../utils/board';
 
 export const Block = ({
@@ -20,6 +21,7 @@ export const Block = ({
   flagsLeft,
   setFlagsLeft,
   setWonGame,
+  setBlocksLeft,
 }) => {
   const selectBlock = () => {
     const x = block.x;
@@ -42,6 +44,7 @@ export const Block = ({
       }
     }
     setBoard([...board]);
+    setBlocksLeft(getBlocksLeft(board));
     if (hasWonGame(board)) {
       setWonGame(true);
     }
@@ -53,6 +56,7 @@ export const Block = ({
       board[y][x].isFlagged = false;
       setFlagsLeft(flagsLeft + 1);
       setBoard([...board]);
+      setBlocksLeft(getBlocksLeft(board));
     }
   };
   return (

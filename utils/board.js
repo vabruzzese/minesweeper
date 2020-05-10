@@ -164,3 +164,15 @@ export const hasWonGame = board => {
   }
   return false;
 };
+
+export const getBlocksLeft = board => {
+  let blocksLeft = 0;
+  for (let i = 0; i < NUMBER_OF_ROWS; i++) {
+    for (let j = 0; j < NUMBER_OF_COLUMNS; j++) {
+      if (!board[j][i].isRevealed && !board[j][i].isFlagged) {
+        blocksLeft++;
+      }
+    }
+  }
+  return blocksLeft;
+};
