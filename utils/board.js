@@ -134,6 +134,18 @@ export const revealSection = (block, board) => {
   }
 };
 
+export const updateFlags = (board, flagsLeft, setFlagsLeft) => {
+  for (let i = 0; i < NUMBER_OF_ROWS; i++) {
+    for (let j = 0; j < NUMBER_OF_COLUMNS; j++) {
+      if (board[j][i].isFlagged && board[j][i].isRevealed) {
+        console.log(flagsLeft);
+        board[j][i].isFlagged = false;
+        setFlagsLeft(++flagsLeft);
+      }
+    }
+  }
+};
+
 export const hasWonGame = board => {
   let matches = 0;
   for (let i = 0; i < NUMBER_OF_ROWS; i++) {

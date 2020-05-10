@@ -5,7 +5,11 @@ import {styles} from './styles';
 import {Flag} from '../../../../Icons/Flag';
 import {Mine} from '../../../../Icons/Mine';
 import {SELECTED_OPTION} from '../../../../../utils/constants';
-import {revealSection, hasWonGame} from '../../../../../utils/board';
+import {
+  revealSection,
+  hasWonGame,
+  updateFlags,
+} from '../../../../../utils/board';
 
 export const Block = ({
   block,
@@ -29,6 +33,7 @@ export const Block = ({
       } else {
         board[y][x].isRevealed = true;
         revealSection(block, board);
+        updateFlags(board, flagsLeft, setFlagsLeft);
       }
     } else {
       if (flagsLeft > 0) {
