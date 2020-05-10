@@ -29,6 +29,7 @@ export const App = () => {
           />
           {gameOver && (
             <GameOver
+              gameOver={gameOver}
               setGameOver={setGameOver}
               setBoard={setBoard}
               setFlagsLeft={setFlagsLeft}
@@ -36,6 +37,7 @@ export const App = () => {
           )}
           {wonGame && (
             <WonGame
+              gameOver={gameOver}
               setWonGame={setWonGame}
               setBoard={setBoard}
               setFlagsLeft={setFlagsLeft}

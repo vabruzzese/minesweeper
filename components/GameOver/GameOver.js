@@ -1,11 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, Button} from 'native-base';
-import {Modal} from 'react-native';
+import {Modal, Animated, Dimensions} from 'react-native';
 import {styles} from './styles';
 import {createBoard} from '../../utils/board';
 import {MAX_NUMBER_OF_FLAGS} from '../../utils/constants';
+import {animateModal} from '../../utils/modal';
 
-export const GameOver = ({setGameOver, setBoard, setFlagsLeft}) => {
+export const GameOver = ({gameOver, setGameOver, setBoard, setFlagsLeft}) => {
+  const modalHeight = Dimensions.get('window').height / 2;
+  const easeAnime = new Animated.Value(0);
+  const scaleX = new Animated.Value(1);
+  const scaleY = new Animated.Value(1);
+  useEffect(() => {
+    animateModal(easeAnime, modalHeight, scaleX, scaleY);
+  }, [gameOver]);
   const resetGame = () => {
     setGameOver(false);
     const newBoard = createBoard();
@@ -15,7 +23,14 @@ export const GameOver = ({setGameOver, setBoard, setFlagsLeft}) => {
   return (
     <Modal visible={true} transparent={true}>
       <View style={styles.topView}>
-        <View style={styles.innerView}>
+        <Animated.View
+          style={[
+            styles.innerView,
+            {
+              marginBottom: easeAnime,
+              transform: [{scaleX: scaleX}, {scaleY: scaleY}],
+            },
+          ]}>
           <Text style={styles.title}>GAME OVER</Text>
           <Text style={styles.sentence}>
             Select the 'Retry' button to play again
@@ -23,7 +38,7 @@ export const GameOver = ({setGameOver, setBoard, setFlagsLeft}) => {
           <Button style={styles.button} onPress={resetGame}>
             <Text style={styles.buttonText}>Retry</Text>
           </Button>
-        </View>
+        </Animated.View>
       </View>
     </Modal>
   );

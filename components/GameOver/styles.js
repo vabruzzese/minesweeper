@@ -11,7 +11,6 @@ export const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: 'auto',
-    marginBottom: 'auto',
     backgroundColor: 'white',
     alignItems: 'center',
     borderRadius: 20,
